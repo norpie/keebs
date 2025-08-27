@@ -69,7 +69,7 @@
         &kp TAB  &kp Q  &kp W  &kp E  &kp R  &kp T  &kp Y  &kp U  &kp  I    &kp  O  &kp  P   &kp LBKT &kp RBKT   &kp BSLH
         &kp CAPS  &hml LGUI A  &hml LALT S  &hml LSHFT D  &hml LCTRL F  &kp G  &kp H  &hmr LCTRL J  &hmr RSHFT K    &hmr LALT L  &hmr LGUI SEMI &kp SQT            &kp RET
         &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH                &kp RSHFT
-        &kp LCTRL &kp LGUI &kp LALT            &kp SPACE                          &kp RALT  &mo 1 &kp RGUI    &kp RCTRL
+        &kp LCTRL &kp LGUI &kp LALT            &kp SPACE                          &kp RALT  &mo 1 &mo 2    &kp RCTRL
       >;
       sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
     };
@@ -86,7 +86,25 @@
         &trans &trans &kp UP &trans &trans &trans &trans &trans &kp INS &trans &trans &kp C_VOL_DN &kp C_VOL_UP &trans
         &trans    &kp LEFT &kp DOWN &kp RIGHT &trans &trans &trans &trans &trans &trans &trans &trans   &trans
         &trans   &trans &trans &trans &trans &trans &trans &trans &kp K_PREV &kp K_PP &kp K_NEXT &trans
-        &trans &trans  &trans              &trans                            &trans   &trans   &sys_reset &bt BT_CLR_ALL
+        &trans &trans  &trans              &trans                            &trans   &trans   &sys_reset &trans
+      >;
+      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+    };
+    
+    bluetooth {
+        // ------------------------------------------------------------------------------------------
+        // |     | BT1 | BT2 | BT3 | BT4 | BT5 |     |     |     |     |     |     |     |          |
+        // |      |     | BT5 |     |     |     |     |     |     |     |     |     |     |          |
+        // |       |     |     |     |     |     |     | BT1 |     | BT4 |     |     |              |
+        // |        |     |     |     | BT3 |     |     | BT2 |     |     |     |              |
+        // |BT_PRV |BT_NXT |       |                                   |     |     |       |BT_CLR|
+        // ------------------------------------------------------------------------------------------
+      bindings = <
+        &trans &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &trans &trans &trans &trans &trans &trans &trans &trans
+        &trans &trans &bt BT_SEL 4 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+        &trans &trans &trans &trans &trans &trans &trans &bt BT_SEL 0 &trans &bt BT_SEL 3 &trans &trans &trans
+        &trans &trans &trans &trans &bt BT_SEL 2 &trans &trans &bt BT_SEL 1 &trans &trans &trans &trans
+        &bt BT_PRV &bt BT_NXT &trans &trans &trans &trans &bootloader &bt BT_CLR_ALL
       >;
       sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
     };
