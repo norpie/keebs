@@ -6,3 +6,4 @@ zmk
 modules
 build
 *.uf2
+zmk-config-urob/
