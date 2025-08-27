@@ -17,22 +17,22 @@ build keyboard="bt60":
             ;;
         "corne")
             # Build left side
-            west build -p -s zmk/app -b nice_nano_v2 -S corne_left -- -DZMK_CONFIG="$(pwd)/config/corne"
+            west build -p -s zmk/app -b nice_nano_v2 -S "corne_left nice_view_adapter nice_view" -- -DZMK_CONFIG="$(pwd)/config/corne"
             cp build/zephyr/zmk.uf2 corne_left.uf2
             echo "Built left side: corne_left.uf2"
             # Build right side
-            west build -p -s zmk/app -b nice_nano_v2 -S corne_right -- -DZMK_CONFIG="$(pwd)/config/corne"
+            west build -p -s zmk/app -b nice_nano_v2 -S "corne_right nice_view_adapter nice_view" -- -DZMK_CONFIG="$(pwd)/config/corne"
             cp build/zephyr/zmk.uf2 corne_right.uf2
             echo "Built right side: corne_right.uf2"
             echo "Firmware built: corne_left.uf2 & corne_right.uf2"
             ;;
         "corne-left")
-            west build -p -s zmk/app -b nice_nano_v2 -S corne_left -- -DZMK_CONFIG="$(pwd)/config/corne"
+            west build -p -s zmk/app -b nice_nano_v2 -S "corne_left nice_view_adapter nice_view" -- -DZMK_CONFIG="$(pwd)/config/corne"
             cp build/zephyr/zmk.uf2 corne_left.uf2
             echo "Firmware built: corne_left.uf2"
             ;;
         "corne-right")
-            west build -p -s zmk/app -b nice_nano_v2 -S corne_right -- -DZMK_CONFIG="$(pwd)/config/corne"
+            west build -p -s zmk/app -b nice_nano_v2 -S "corne_right nice_view_adapter nice_view" -- -DZMK_CONFIG="$(pwd)/config/corne"
             cp build/zephyr/zmk.uf2 corne_right.uf2
             echo "Firmware built: corne_right.uf2"
             ;;

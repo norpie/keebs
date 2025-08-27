@@ -21,8 +21,8 @@ include:
   - board: bt60_v2
     cmake-args: -DZMK_CONFIG="/workspaces/zmk-config/config/bt60"
   - board: nice_nano_v2
-    shield: corne_left
+    shield: corne_left nice_view_adapter nice_view
     cmake-args: -DZMK_CONFIG="/workspaces/zmk-config/config/corne"
   - board: nice_nano_v2
-    shield: corne_right
+    shield: corne_right nice_view_adapter nice_view
     cmake-args: -DZMK_CONFIG="/workspaces/zmk-config/config/corne"
