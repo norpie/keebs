@@ -71,7 +71,6 @@
         &kp LSHFT  &kp Z  &kp X  &kp C  &kp V  &kp B  &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH                &kp RSHFT
         &kp LCTRL &kp LGUI &kp LALT            &kp SPACE                          &kp RALT  &mo 1 &mo 2    &kp RCTRL
       >;
-      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
     };
     raise {
         // ------------------------------------------------------------------------------------------
@@ -88,7 +87,6 @@
         &trans   &trans &trans &trans &trans &trans &trans &trans &kp K_PREV &kp K_PP &kp K_NEXT &trans
         &trans &trans  &trans              &trans                            &trans   &trans   &sys_reset &trans
       >;
-      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
     };
     
     bluetooth {
@@ -106,7 +104,6 @@
         &trans &trans &trans &trans &bt BT_SEL 2 &trans &trans &bt BT_SEL 1 &trans &trans &trans &trans
         &bt BT_PRV &bt BT_NXT &trans &trans &trans &trans &bootloader &bt BT_CLR_ALL
       >;
-      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
     };
     
   };
