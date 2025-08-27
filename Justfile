@@ -12,12 +12,18 @@ build keyboard="bt60":
     case "{{keyboard}}" in
         "bt60")
             west build -p -s zmk/app -b bt60_v2 -- -DZMK_CONFIG="$(pwd)/config/bt60"
+            cp build/zephyr/zmk.uf2 bt60_v2.uf2
+            echo "Firmware built: bt60_v2.uf2"
             ;;
         "corne-left")
             west build -p -s zmk/app -b nice_nano_v2 -S corne_left -- -DZMK_CONFIG="$(pwd)/config/corne"
+            cp build/zephyr/zmk.uf2 corne_left.uf2
+            echo "Firmware built: corne_left.uf2"
             ;;
         "corne-right")
             west build -p -s zmk/app -b nice_nano_v2 -S corne_right -- -DZMK_CONFIG="$(pwd)/config/corne"
+            cp build/zephyr/zmk.uf2 corne_right.uf2
+            echo "Firmware built: corne_right.uf2"
             ;;
         *)
             echo "Unknown keyboard: {{keyboard}}"
@@ -29,6 +35,7 @@ build keyboard="bt60":
 # Clean build artifacts
 clean:
     rm -rf build
+    rm -f *.uf2
 
 # Clean everything including west modules
 clean-all: clean

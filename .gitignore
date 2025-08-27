@@ -5,3 +5,4 @@ zephyr
 zmk
 modules
 build
+*.uf2
