@@ -6,7 +6,7 @@ init:
 update:
     west update
 
-# Build firmware (default: bt60, options: bt60, corne-left, corne-right)
+# Build firmware (default: bt60, options: bt60, corne, corne-left, corne-right)
 build keyboard="bt60":
     #!/usr/bin/env bash
     case "{{keyboard}}" in
@@ -14,6 +14,17 @@ build keyboard="bt60":
             west build -p -s zmk/app -b bt60_v2 -- -DZMK_CONFIG="$(pwd)/config/bt60"
             cp build/zephyr/zmk.uf2 bt60_v2.uf2
             echo "Firmware built: bt60_v2.uf2"
+            ;;
+        "corne")
+            # Build left side
+            west build -p -s zmk/app -b nice_nano_v2 -S corne_left -- -DZMK_CONFIG="$(pwd)/config/corne"
+            cp build/zephyr/zmk.uf2 corne_left.uf2
+            echo "Built left side: corne_left.uf2"
+            # Build right side
+            west build -p -s zmk/app -b nice_nano_v2 -S corne_right -- -DZMK_CONFIG="$(pwd)/config/corne"
+            cp build/zephyr/zmk.uf2 corne_right.uf2
+            echo "Built right side: corne_right.uf2"
+            echo "Firmware built: corne_left.uf2 & corne_right.uf2"
             ;;
         "corne-left")
             west build -p -s zmk/app -b nice_nano_v2 -S corne_left -- -DZMK_CONFIG="$(pwd)/config/corne"
@@ -27,7 +38,7 @@ build keyboard="bt60":
             ;;
         *)
             echo "Unknown keyboard: {{keyboard}}"
-            echo "Available options: bt60, corne-left, corne-right"
+            echo "Available options: bt60, corne, corne-left, corne-right"
             exit 1
             ;;
     esac
