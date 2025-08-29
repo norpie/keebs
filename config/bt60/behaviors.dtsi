@@ -43,12 +43,17 @@ ZMK_HOLD_TAP(hmr,
     hold-trigger-on-release;
 )
 
+// Bluetooth backspace behavior: BT clear current on tap, BT clear all on shift+tap
+ZMK_MOD_MORPH(bt_bspc,
+    bindings = <&bt BT_CLR>, <&bt BT_CLR_ALL>;
+    mods = <(MOD_LSFT|MOD_RSFT)>;
+)
+
 /* Placeholder behaviors for future smart features:
  * These will be implemented later:
  * - Smart Caps Lock (tap: ESC, hold: CTRL, double-tap: caps-word)
  * - Magic Shift (adaptive shift behavior)
  * - Smart Number Row (tap: number, hold: F-key)
- * - Mod-morphs for shifted actions
  * - Smart Space Bar behavior
  * - Alt-Tab swapper
  */
