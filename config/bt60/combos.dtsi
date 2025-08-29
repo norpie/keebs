@@ -1,0 +1,33 @@
+/*
+ * Combo definitions for BT60 v2
+ * Inspired by urob's symbol chording system
+ */
+
+// Include zmk-helpers for combo macros
+#include "../../zmk-helpers/include/zmk-helpers/helper.h"
+
+// Combo timing definitions
+#define COMBO_TERM_FAST 18
+#define COMBO_TERM_SLOW 30
+#define COMBO_IDLE_FAST 150
+#define COMBO_IDLE_SLOW 50
+
+// Layer definitions for combo activation
+#define COMBO_LAYERS_DEFAULT 0
+#define COMBO_LAYERS_ALL 0 1 2 3
+
+/* Placeholder combo definitions for future implementation:
+ * 
+ * Symbol combos will be implemented later:
+ * - Vertical combos for number row symbols (@, #, $, %, ^, +, *, &, `, \, =, ~, _, -, /, |)
+ * - Horizontal combos for brackets/braces with layer-dependent behavior
+ * - Special combos for leader key activation, smart mouse, etc.
+ * 
+ * Timing will use:
+ * - COMBO_TERM_FAST (18ms) for horizontal combos
+ * - COMBO_TERM_SLOW (30ms) for vertical combos
+ * - require-prior-idle-ms to prevent accidental triggers
+ * 
+ * Example structure (to be implemented):
+ * ZMK_COMBO(esc, &kp ESC, LT3 LT2, COMBO_LAYERS_ALL, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ */

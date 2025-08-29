@@ -8,3 +8,6 @@ build
 *.uf2
 zmk-config-urob/
 TODO.md
+zmk-tri-state
+zmk-helpers
+zmk-auto-layer
