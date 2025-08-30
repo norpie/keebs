@@ -37,6 +37,9 @@
               # Basic tools
               pkgs.git
               pkgs.python3
+              
+              # Keymap visualization
+              pkgs.python3Packages.pipx
             ];
 
           shellHook = ''

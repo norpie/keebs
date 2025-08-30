@@ -1,0 +1,169 @@
+layout: {zmk_keyboard: bt60_v2, layout_name: layout_60_ansi}
+layers:
+  default:
+  - [ESC, '1', '2', '3', '4', '5', '6', '7', '8', '9']
+  - ['0', '-', '=', BSPC, TAB, Q, W, E, R, T]
+  - - Y
+    - U
+    - I
+    - O
+    - P
+    - '['
+    - ']'
+    - \
+    - CAPS
+    - {t: A, h: LGUI}
+  - - {t: S, h: LALT}
+    - {t: D, h: LSHFT}
+    - {t: F, h: LCTRL}
+    - G
+    - H
+    - {t: J, h: RCTRL}
+    - {t: K, h: RSHFT}
+    - {t: L, h: RALT}
+    - {t: ;, h: RGUI}
+    - ''''
+  - - RET
+    - {t: ▽, type: trans}
+    - Z
+    - X
+    - C
+    - V
+    - B
+    - N
+    - M
+    - ','
+  - - .
+    - /
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - SPACE
+    - {t: ▽, type: trans}
+    - fn
+    - bluetooth
+  - - {t: ▽, type: trans}
+  fn:
+  - ['`', F1, F2, F3, F4, F5, F6, F7, F8, F9]
+  - - F10
+    - F11
+    - F12
+    - DEL
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - UP
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - INS
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - VOL DN
+    - VOL UP
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: LEFT, h: LGUI}
+  - - {t: DOWN, h: LALT}
+    - {t: RIGHT, h: LSHFT}
+    - {t: F, h: LCTRL}
+    - {t: gaming, h: toggle}
+    - {t: ▽, type: trans}
+    - {t: J, h: RCTRL}
+    - {t: K, h: RSHFT}
+    - {t: L, h: RALT}
+    - {t: ;, h: RGUI}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - PREV
+  - - PP
+    - NEXT
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {type: held}
+    - {t: ▽, type: trans}
+  - ['&bootloader']
+  bluetooth:
+  - - {t: ▽, type: trans}
+    - {t: BT, h: '0'}
+    - {t: BT, h: '1'}
+    - {t: BT, h: '2'}
+    - {t: BT, h: '3'}
+    - {t: BT, h: '4'}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: BT CLR, s: BT CLR ALL}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: BT, h: '4'}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: BT, h: '0'}
+    - {t: ▽, type: trans}
+    - {t: BT, h: '3'}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: BT, h: '2'}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: BT, h: '1'}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - BT PRV
+    - BT NXT
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: '&bootloader', type: held}
+  - - {t: ▽, type: trans}
+  gaming:
+  - [ESC, '1', '2', '3', '4', '5', '6', '7', '8', '9']
+  - ['0', '-', '=', BSPC, TAB, Q, W, E, R, T]
+  - [Y, U, I, O, P, '[', ']', \, CAPS, A]
+  - [S, D, F, G, H, J, K, L, ;, '''']
+  - [RET, LSHFT, Z, X, C, V, B, N, M, ',']
+  - [., /, RSHFT, LCTRL, LGUI, LALT, SPACE, RALT, fn, bluetooth]
+  - [RCTRL]

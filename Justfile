@@ -52,6 +52,10 @@ clean:
 clean-all: clean
     rm -rf .west modules tools zephyr bootloader
 
+# Generate keymap layer previews (options: all, bt60, corne)
+keymap keyboard="all":
+    ./scripts/generate-keymap-previews.sh {{keyboard}}
+
 # List available commands
 list:
     @just --list

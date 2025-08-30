@@ -1,0 +1,36 @@
+layout: {zmk_keyboard: corneish_zen}
+layers:
+  Base:
+  - ['`', Q, W, E, R, T, Y, U, I, O]
+  - - P
+    - '-'
+    - '='
+    - {t: A, h: LGUI}
+    - {t: S, h: LALT}
+    - {t: D, h: LSHFT}
+    - {t: F, h: LCTRL}
+    - G
+    - H
+    - {t: J, h: LCTRL}
+  - - {t: K, h: RSHFT}
+    - {t: L, h: LALT}
+    - {t: ;, h: LGUI}
+    - ''''
+    - \
+    - Z
+    - X
+    - C
+    - V
+    - B
+  - - N
+    - M
+    - ','
+    - .
+    - /
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - SPACE
+    - BSPC
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
