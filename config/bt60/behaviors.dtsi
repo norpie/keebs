@@ -49,6 +49,17 @@ ZMK_MOD_MORPH(bt_bspc,
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
+// Space hold-tap: tap for space, hold for nav layer
+ZMK_HOLD_TAP(spc_nav,
+    flavor = "balanced";
+    tapping-term-ms = <TAPPING_TERM_MS>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+    require-prior-idle-ms = <PRIOR_IDLE_MS>;
+    bindings = <&mo>, <&kp>;
+    hold-trigger-key-positions = <KEYS_L KEYS_R>;
+    hold-trigger-on-release;
+)
+
 /* Placeholder behaviors for future smart features:
  * These will be implemented later:
  * - Smart Caps Lock (tap: ESC, hold: CTRL, double-tap: caps-word)
