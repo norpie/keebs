@@ -43,6 +43,19 @@
     
     // Right-hand homerow mods  
     MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS)
+    
+    // Space hold-tap: tap for space, hold for nav layer
+    spc_nav: spc_nav {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "balanced";
+      tapping-term-ms = <280>;
+      quick-tap-ms = <QUICK_TAP_MS>;
+      require-prior-idle-ms = <150>;
+      bindings = <&mo>, <&kp>;
+      hold-trigger-key-positions = <KEYS_L KEYS_R>;
+      hold-trigger-on-release;
+    };
   };
 
   keymap {
@@ -58,7 +71,23 @@
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
                &trans         &kp Z         &kp X         &kp C         &kp V         &kp B                    &kp N         &kp M       &kp COMMA      &kp DOT       &kp FSLH       &trans       
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                          &trans      &kp LSHFT     &kp SPACE                 &kp RET      &kp RSHFT      &trans       
+                                                          &trans      &kp LSHFT  &spc_nav 1 SPACE             &kp RET      &kp RSHFT      &trans       
+        //                                           ╰─────────────┴─────────────┐             │          │             ┌─────────────┴─────────────╯
+        //                                                                       ╰─────────────╯          ╰─────────────╯
+      >;
+    };
+    
+    nav {
+      display-name = "Nav";
+      bindings = <
+        // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮          ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+              &trans        &trans     &kp LC(RIGHT)    &trans        &trans        &trans                   &trans        &kp PG_UP      &trans        &trans        &trans        &trans     
+        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+              &trans     &hml LGUI A   &hml LALT S   &hml LSHFT D  &hml LCTRL F     &trans                   &kp HOME  &hmr RCTRL LEFT &hmr RSHFT DOWN &hmr RALT UP &hmr RGUI RIGHT  &kp END      
+        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+               &trans         &trans        &trans        &trans        &trans     &kp LC(LEFT)              &trans        &kp PG_DN      &trans        &trans        &trans        &trans       
+        // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
+                                                          &trans        &trans        &trans                 &trans         &trans        &trans       
         //                                           ╰─────────────┴─────────────┐             │          │             ┌─────────────┴─────────────╯
         //                                                                       ╰─────────────╯          ╰─────────────╯
       >;
