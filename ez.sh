@@ -1,23 +1,58 @@
 #!/usr/bin/env bash
 
-# EZ Flash - Helper script for flashing BT60 firmware
-# Usage: ./ez.sh
+# EZ Flash - Helper script for flashing keyboard firmware
+# Usage: ./ez.sh [bt60|corne-left|corne-right]
 # Put the keyboard in flash mode after running this script
 
 set -euo pipefail
 
-FIRMWARE_PATH="bt60_v2.uf2"
+# Default to bt60 for backward compatibility
+KEYBOARD_TYPE="${1:-bt60}"
+
+case "$KEYBOARD_TYPE" in
+    "bt60")
+        FIRMWARE_PATH="bt60_v2.uf2"
+        KEYBOARD_NAME="BT60 v2"
+        ;;
+    "corne-left")
+        FIRMWARE_PATH="corne_left.uf2"
+        KEYBOARD_NAME="Corne (Left Half)"
+        ;;
+    "corne-right")
+        FIRMWARE_PATH="corne_right.uf2"
+        KEYBOARD_NAME="Corne (Right Half)"
+        ;;
+    *)
+        echo "❌ Unknown keyboard type: $KEYBOARD_TYPE"
+        echo "   Available options: bt60, corne-left, corne-right"
+        echo "   Usage: ./ez.sh [bt60|corne-left|corne-right]"
+        exit 1
+        ;;
+esac
+
 EXPECTED_SIZE="32M"
 
-echo "EZ Flash - BT60 Firmware Helper"
+echo "EZ Flash - $KEYBOARD_NAME Firmware Helper"
 echo "==============================="
 echo
 
 # Check if firmware exists
 if [ ! -f "$FIRMWARE_PATH" ]; then
     echo "❌ Firmware not found at: $FIRMWARE_PATH"
-    echo "   Please build the firmware first with: just build"
-    echo "   (This should create bt60_v2.uf2 in the current directory)"
+    case "$KEYBOARD_TYPE" in
+        "bt60")
+            echo "   Please build the firmware first with: just build bt60"
+            echo "   (This should create bt60_v2.uf2 in the current directory)"
+            ;;
+        "corne-left")
+            echo "   Please build the firmware first with: just build corne-left"
+            echo "   (This should create corne_left.uf2 in the current directory)"
+            ;;
+        "corne-right")
+            echo "   Please build the firmware first with: just build corne-right"
+            echo "   (This should create corne_right.uf2 in the current directory)"
+            ;;
+    esac
     exit 1
 fi
 
@@ -45,8 +80,16 @@ check_32m_devices() {
 }
 
 # Wait for user to put keyboard in flash mode
-echo "⏳ Put your BT60 keyboard in flash mode now..."
-echo "   (Hold the reset button or use the key combination)"
+echo "⏳ Put your $KEYBOARD_NAME in flash mode now..."
+case "$KEYBOARD_TYPE" in
+    "bt60")
+        echo "   (Hold the reset button or use the key combination)"
+        ;;
+    "corne-left"|"corne-right")
+        echo "   (Double-tap the reset button on the Nice!Nano)"
+        echo "   Make sure you're flashing the correct half!"
+        ;;
+esac
 echo
 
 while true; do
