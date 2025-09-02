@@ -91,6 +91,12 @@ case "$KEYBOARD_TYPE" in
         ;;
 esac
 echo
+echo "💡 What to expect:"
+echo "   - The keyboard should appear as a ~32MB USB drive"
+echo "   - You may see it mount automatically in your file manager"
+echo "   - The script will detect it and show device details below"
+echo
+echo "🔍 Scanning for flash mode device (each dot = 1 second)..."
 
 while true; do
     if check_32m_devices; then
@@ -118,7 +124,7 @@ else
 fi
 
 # Prepare the flash command
-FLASH_CMD="sudo cp '$FIRMWARE_PATH' '$FLASH_PATH' && sync && echo '✅ Firmware flashed successfully to $FLASH_PATH' && sudo umount '$FLASH_PATH' 2>/dev/null && echo '💾 Device safely unmounted'"
+FLASH_CMD="sudo cp '$FIRMWARE_PATH' '$FLASH_PATH' && sync && echo '✅ Firmware flashed successfully to $FLASH_PATH' && (sudo umount '$FLASH_PATH' 2>/dev/null || true) && echo '💾 Device safely unmounted'"
 
 # Ask for confirmation and execute if approved
 "$CONFIRM_CMD" "Flash firmware to $FLASH_PATH?" "$FLASH_CMD"

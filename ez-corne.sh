@@ -33,10 +33,11 @@ echo
 
 # Function to ask user which half to start with
 ask_start_half() {
-    echo "Which half would you like to flash first?"
-    echo "1) Left half"
-    echo "2) Right half"
-    echo -n "Choice (1 or 2): "
+    echo "🤔 Which half would you like to flash first?" >&2
+    echo "   1) Left half" >&2
+    echo "   2) Right half" >&2
+    echo >&2
+    echo -n "👉 Enter your choice (1 or 2): " >&2
     read -r choice
     
     case "$choice" in
@@ -47,7 +48,7 @@ ask_start_half() {
             echo "right"
             ;;
         *)
-            echo "❌ Invalid choice. Please enter 1 or 2."
+            echo "❌ Invalid choice. Please enter 1 or 2." >&2
             ask_start_half
             ;;
     esac
@@ -70,11 +71,19 @@ echo
 
 # Flash first half
 echo "🚀 Starting with $FIRST_HALF half..."
-echo "Press Enter when ready to continue..."
+echo
+echo "📋 Before pressing Enter:"
+echo "   1. Connect ONLY the $FIRST_HALF half to your computer via USB"
+echo "   2. Make sure the other half is disconnected"
+echo "   3. Have the $FIRST_HALF half ready to put in flash mode"
+echo
+echo "Press Enter when the $FIRST_HALF half is connected and ready..."
 read -r
 
 if ! ./ez.sh "corne-$FIRST_HALF"; then
-    echo "❌ Failed to flash $FIRST_HALF half"
+    echo "❌ Flash script returned error for $FIRST_HALF half"
+    echo "   Note: If the firmware was actually flashed successfully,"
+    echo "   you can continue manually with: ./ez.sh corne-$SECOND_HALF"
     exit 1
 fi
 
@@ -82,12 +91,19 @@ echo
 echo "✅ $FIRST_HALF half flashed successfully!"
 echo
 echo "🔄 Now let's flash the $SECOND_HALF half..."
-echo "Make sure to disconnect the first half and connect the second half."
-echo "Press Enter when ready to continue..."
+echo
+echo "📋 Before pressing Enter:"
+echo "   1. Disconnect the $FIRST_HALF half from your computer"
+echo "   2. Connect ONLY the $SECOND_HALF half to your computer via USB"
+echo "   3. Have the $SECOND_HALF half ready to put in flash mode"
+echo
+echo "Press Enter when the $SECOND_HALF half is connected and ready..."
 read -r
 
 if ! ./ez.sh "corne-$SECOND_HALF"; then
-    echo "❌ Failed to flash $SECOND_HALF half"
+    echo "❌ Flash script returned error for $SECOND_HALF half"
+    echo "   Note: If the firmware was actually flashed successfully,"
+    echo "   the process is complete despite the error message."
     exit 1
 fi
 
