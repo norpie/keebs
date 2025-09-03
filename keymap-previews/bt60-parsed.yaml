@@ -23,58 +23,49 @@ layers:
     - {t: L, h: RALT}
     - {t: ;, h: RGUI}
     - ''''
-  - - RET
-    - {t: ▽, type: trans}
-    - Z
-    - X
-    - C
-    - V
-    - B
-    - N
-    - M
-    - ','
+  - [RET, BSPC, Z, X, C, V, B, N, M, ',']
   - - .
     - /
+    - BSPC
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
+    - {t: SPACE, h: nav}
     - {t: ▽, type: trans}
-    - SPACE
     - {t: ▽, type: trans}
-    - fn
-    - bluetooth
-  - - {t: ▽, type: trans}
-  fn:
+    - {t: ▽, type: trans}
+  - [bluetooth]
+  nav:
   - ['`', F1, F2, F3, F4, F5, F6, F7, F8, F9]
   - - F10
     - F11
     - F12
     - DEL
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - UP
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - INS
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    - '5'
+  - - '6'
+    - '7'
+    - '8'
+    - '9'
+    - '0'
     - VOL DN
     - VOL UP
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: LEFT, h: LGUI}
-  - - {t: DOWN, h: LALT}
-    - {t: RIGHT, h: LSHFT}
+    - {t: A, h: LGUI}
+  - - {t: S, h: LALT}
+    - {t: D, h: LSHFT}
     - {t: F, h: LCTRL}
     - {t: gaming, h: toggle}
     - {t: ▽, type: trans}
-    - {t: J, h: RCTRL}
-    - {t: K, h: RSHFT}
-    - {t: L, h: RALT}
-    - {t: ;, h: RGUI}
+    - {t: LEFT, h: RCTRL}
+    - {t: DOWN, h: RSHFT}
+    - {t: UP, h: RALT}
+    - {t: RIGHT, h: RGUI}
     - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -88,15 +79,15 @@ layers:
     - PREV
   - - PP
     - NEXT
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - DEL
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {type: held}
+    - '&bootloader'
     - {t: ▽, type: trans}
-  - ['&bootloader']
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
   bluetooth:
   - - {t: ▽, type: trans}
     - {t: BT, h: '0'}
@@ -155,15 +146,15 @@ layers:
     - BT NXT
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
+    - '&bootloader'
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: '&bootloader', type: held}
-  - - {t: ▽, type: trans}
+  - - {type: held}
   gaming:
   - [ESC, '1', '2', '3', '4', '5', '6', '7', '8', '9']
   - ['0', '-', '=', BSPC, TAB, Q, W, E, R, T]
   - [Y, U, I, O, P, '[', ']', \, CAPS, A]
   - [S, D, F, G, H, J, K, L, ;, '''']
   - [RET, LSHFT, Z, X, C, V, B, N, M, ',']
-  - [., /, RSHFT, LCTRL, LGUI, LALT, SPACE, RALT, fn, bluetooth]
-  - [RCTRL]
+  - [., /, RSHFT, LCTRL, LGUI, LALT, SPACE, RALT, RGUI, RCTRL]
+  - - {t: gaming, h: toggle}
