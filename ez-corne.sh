@@ -4,6 +4,11 @@
 # Usage: ./ez-corne.sh [left|right]
 # If no argument provided, defaults to flashing left then right
 
+just build corne || {
+    echo "❌ 'just build corne' failed. Please fix build issues first."
+    exit 1
+}
+
 set -euo pipefail
 
 # Default order: left first, then right
