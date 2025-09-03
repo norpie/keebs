@@ -36,23 +36,6 @@
         __VA_ARGS__ \
     };
 
-// Define ZMK_COMBO macro
-#define ZMK_COMBO(name, bindings, keypos, layers, term, idle) \
-    name: name { \
-        compatible = "zmk,behavior-combo"; \
-        #binding-cells = <0>; \
-        bindings = <bindings>; \
-        key-positions = <keypos>; \
-        layers = <layers>; \
-        timeout-ms = <term>; \
-        require-prior-idle-ms = <idle>; \
-    };
-
-// Combo timing definitions
-#define COMBO_TERM_FAST 18
-#define COMBO_TERM_SLOW 30
-#define COMBO_IDLE_FAST 150
-#define COMBO_IDLE_SLOW 50
 
 / {
   behaviors {
@@ -75,8 +58,8 @@
       hold-trigger-on-release;
     };
     
-    // Enter hold-tap: tap for enter, hold for num layer
-    ret_num: ret_num {
+    // Enter hold-tap: tap for enter, hold for numsym layer
+    ret_numsym: ret_numsym {
       compatible = "zmk,behavior-hold-tap";
       #binding-cells = <2>;
       flavor = "balanced";
@@ -157,7 +140,7 @@
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
                &trans         &kp Z         &kp X         &kp C         &kp V         &kp B                    &kp N         &kp M       &kp COMMA      &kp DOT       &kp FSLH       &trans       
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                          &trans      &kp LSHFT  &spc_nav 1 SPACE          &ret_num 2 RET   &kp RSHFT      &trans       
+                                                          &trans      &kp LSHFT  &spc_nav 1 SPACE          &ret_numsym 2 RET   &kp RSHFT      &trans       
         //                                           ╰─────────────┴─────────────┐             │          │             ┌─────────────┴─────────────╯
         //                                                                       ╰─────────────╯          ╰─────────────╯
       >;
@@ -179,17 +162,17 @@
       >;
     };
     
-    num {
-      display-name = "Num";
+    numsym {
+      display-name = "Num/Sym";
       bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮          ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-              &trans        &trans        &kp N7        &kp N8        &kp N9        &trans                   &trans        &trans        &trans        &trans        &trans        &trans     
+              &trans         &trans        &kp N7        &kp N8        &kp N9        &trans                   &kp CARET     &kp AMPS      &kp STAR      &kp UNDER     &kp PIPE      &kp PRCNT     
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-              &trans        &trans        &kp N4        &kp N5        &kp N6        &trans                   &trans        &trans        &trans        &trans        &trans        &trans      
+              &trans         &kp N0        &kp N4        &kp N5        &kp N6        &trans                   &kp EQUAL     &kp PLUS      &kp MINUS     &kp FSLH      &kp BSLH      &trans      
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-               &trans        &trans        &kp N1        &kp N2        &kp N3        &trans                   &trans        &trans        &trans        &trans        &trans        &trans       
+               &trans        &trans        &kp N1        &kp N2        &kp N3        &trans                   &kp TILDE     &kp GRAVE     &kp HASH      &kp AT        &kp DLLR      &trans       
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                          &trans        &kp N0        &trans                   &trans        &trans        &trans       
+                                                          &trans        &trans        &trans                   &trans        &trans        &trans       
         //                                           ╰─────────────┴─────────────┐             │          │             ┌─────────────┴─────────────╯
         //                                                                       ╰─────────────╯          ╰─────────────╯
       >;
