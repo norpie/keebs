@@ -52,6 +52,29 @@ clean:
 clean-all: clean
     rm -rf .west modules tools zephyr bootloader
 
+# Build reset firmware for troubleshooting connection issues
+reset keyboard:
+    #!/usr/bin/env bash
+    case "{{keyboard}}" in
+        "bt60")
+            west build -p -s zmk/app -b bt60_v2 -- -DSHIELD=settings_reset
+            cp build/zephyr/zmk.uf2 bt60_v2_reset.uf2
+            echo "Reset firmware built: bt60_v2_reset.uf2"
+            echo "Flash this firmware, then flash your normal firmware again"
+            ;;
+        "corne")
+            west build -p -s zmk/app -b nice_nano_v2 -- -DSHIELD=settings_reset
+            cp build/zephyr/zmk.uf2 corne_reset.uf2
+            echo "Reset firmware built: corne_reset.uf2"
+            echo "Flash to both halves, then flash normal firmware again"
+            ;;
+        *)
+            echo "Unknown keyboard: {{keyboard}}"
+            echo "Available options: bt60, corne"
+            exit 1
+            ;;
+    esac
+
 # Generate keymap layer previews (options: all, bt60, corne)
 keymap keyboard="all":
     ./scripts/generate-keymap-previews.sh {{keyboard}}

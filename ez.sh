@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # EZ Flash - Helper script for flashing keyboard firmware
-# Usage: ./ez.sh [bt60|corne-left|corne-right]
+# Usage: ./ez.sh [bt60|corne-left|corne-right|bt60-reset|corne-reset]
 # Put the keyboard in flash mode after running this script
 
 set -euo pipefail
@@ -22,10 +22,18 @@ case "$KEYBOARD_TYPE" in
         FIRMWARE_PATH="corne_right.uf2"
         KEYBOARD_NAME="Corne (Right Half)"
         ;;
+    "bt60-reset")
+        FIRMWARE_PATH="bt60_v2_reset.uf2"
+        KEYBOARD_NAME="BT60 v2 (Reset)"
+        ;;
+    "corne-reset")
+        FIRMWARE_PATH="corne_reset.uf2"
+        KEYBOARD_NAME="Corne (Reset)"
+        ;;
     *)
         echo "❌ Unknown keyboard type: $KEYBOARD_TYPE"
-        echo "   Available options: bt60, corne-left, corne-right"
-        echo "   Usage: ./ez.sh [bt60|corne-left|corne-right]"
+        echo "   Available options: bt60, corne-left, corne-right, bt60-reset, corne-reset"
+        echo "   Usage: ./ez.sh [bt60|corne-left|corne-right|bt60-reset|corne-reset]"
         exit 1
         ;;
 esac
@@ -51,6 +59,14 @@ if [ ! -f "$FIRMWARE_PATH" ]; then
         "corne-right")
             echo "   Please build the firmware first with: just build corne-right"
             echo "   (This should create corne_right.uf2 in the current directory)"
+            ;;
+        "bt60-reset")
+            echo "   Please build the reset firmware first with: just reset bt60"
+            echo "   (This should create bt60_v2_reset.uf2 in the current directory)"
+            ;;
+        "corne-reset")
+            echo "   Please build the reset firmware first with: just reset corne"
+            echo "   (This should create corne_reset.uf2 in the current directory)"
             ;;
     esac
     exit 1
@@ -88,6 +104,14 @@ case "$KEYBOARD_TYPE" in
     "corne-left"|"corne-right")
         echo "   (Double-tap the reset button on the Nice!Nano)"
         echo "   Make sure you're flashing the correct half!"
+        ;;
+    "bt60-reset")
+        echo "   (Hold the reset button or use the key combination)"
+        echo "   ⚠️  RESET FIRMWARE - Flash normal firmware afterwards!"
+        ;;
+    "corne-reset")
+        echo "   (Double-tap the reset button on the Nice!Nano)"
+        echo "   ⚠️  RESET FIRMWARE - Flash to both halves, then flash normal firmware!"
         ;;
 esac
 echo
