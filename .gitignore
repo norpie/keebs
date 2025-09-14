@@ -12,3 +12,4 @@ zmk-tri-state
 zmk-helpers
 zmk-auto-layer
 inspo/
+.claude/settings.local.json
