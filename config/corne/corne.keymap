@@ -335,7 +335,7 @@
 
     // Paste combo on W, E, R
     combo_paste {
-      bindings = <&kp LC(V)>;
+      bindings = <&kp LC(LS(V))>;
       key-positions = <2 3 4>;
       layers = <0>;
       timeout-ms = <18>;
