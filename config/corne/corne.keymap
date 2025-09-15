@@ -110,7 +110,20 @@
       hold-trigger-key-positions = <KEYS_L KEYS_R>;
       hold-trigger-on-release;
     };
-    
+
+    // Backspace hold-tap: tap for backspace, hold for sys layer
+    bspc_sys: bspc_sys {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "balanced";
+      tapping-term-ms = <280>;
+      quick-tap-ms = <QUICK_TAP_MS>;
+      require-prior-idle-ms = <150>;
+      bindings = <&mo>, <&kp>;
+      hold-trigger-key-positions = <KEYS_L KEYS_R>;
+      hold-trigger-on-release;
+    };
+
   };
 
   combos {
@@ -400,6 +413,15 @@
       timeout-ms = <18>;
       require-prior-idle-ms = <150>;
     };
+
+    // Caps lock combo on D, K
+    combo_caps_lock {
+      bindings = <&kp CAPS>;
+      key-positions = <15 20>;
+      layers = <0>;
+      timeout-ms = <18>;
+      require-prior-idle-ms = <150>;
+    };
   };
 
   keymap {
@@ -415,7 +437,7 @@
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
              &kp LSHIFT       &kp Z         &kp X         &kp C         &kp V         &kp B                    &kp N         &kp M       &kp COMMA      &kp DOT       &kp FSLH     &kp RSHIFT       
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                          &mo 5       &mo 3        &spc_nav 1 SPACE     &ret_numsym 2 RET    &mo 4        &caps_word    
+                                                          &mo 5       &mo 3        &spc_nav 1 SPACE     &ret_numsym 2 RET  &bspc_sys 4 BSPC   &trans    
         //                                           ╰─────────────┴─────────────┐             │          │             ┌─────────────┴─────────────╯
         //                                                                       ╰─────────────╯          ╰─────────────╯
       >;
