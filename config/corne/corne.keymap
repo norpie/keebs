@@ -150,6 +150,19 @@
       hold-trigger-on-release;
     };
 
+    // Repeat/meh hold-tap: tap for repeat, hold for meh (Ctrl+Alt+Shift)
+    repeat_meh: repeat_meh {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "balanced";
+      tapping-term-ms = <280>;
+      quick-tap-ms = <QUICK_TAP_MS>;
+      require-prior-idle-ms = <150>;
+      bindings = <&kp>, <&key_repeat>;
+      hold-trigger-key-positions = <KEYS_L KEYS_R>;
+      hold-trigger-on-release;
+    };
+
   };
 
   combos {
@@ -463,7 +476,7 @@
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
                &trans         &kp Z         &kp X         &kp C         &kp V         &kp B                    &kp N         &kp M       &kp COMMA      &kp DOT       &kp FSLH       &trans       
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                       &tab_mouse 5 TAB &esc_fn 3 ESC  &spc_nav 1 SPACE     &ret_numsym 2 RET  &bspc_sys 4 BSPC   &trans    
+                                                       &tab_mouse 5 TAB &esc_fn 3 ESC  &spc_nav 1 SPACE     &ret_numsym 2 RET  &bspc_sys 4 BSPC &repeat_meh LC(LA(LSHFT)) 0    
         //                                           ╰─────────────┴─────────────┐             │          │             ┌─────────────┴─────────────╯
         //                                                                       ╰─────────────╯          ╰─────────────╯
       >;
